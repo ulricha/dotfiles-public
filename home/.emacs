@@ -1,3 +1,5 @@
+(show-paren-mode 1)
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
@@ -33,8 +35,68 @@
     (define-key haskell-mode-map (kbd "C-c C-b") 'haskell-interactive-switch)
     (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
     (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+    ;; Jump to the imports. Keep tapping to jump between import
+    ;; groups. C-u f8 to jump back again.
+    (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+    ;; Jump to the definition of the current symbol.
+    (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
     (define-key haskell-mode-map (kbd "C-c M-.") nil)
     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
 
 ;(eval-after-load "haskell-mode"
 ;  (define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
+
+;; Notmuch Emacs interface
+(require 'notmuch)
+(require 'notmuch-address)
+(setq notmuch-address-command "/home/au/bin/notmuch-google-contacts")
+(notmuch-address-message-insinuate)
+
+(define-key notmuch-show-mode-map "d"
+  (lambda ()
+    (interactive)
+    (notmuch-show-tag-message "+delete")))
+
+(define-key notmuch-search-mode-map "d"
+  (lambda ()
+    (interactive)
+    (notmuch-search-tag "+delete")))
+
+;; Auctex
+;(load "auctex.el" nil t t)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq TeX-parse-self t)
+(setq TeX-auto-save t)
+
+(setq-default TeX-master nil)
+(setq TeX-PDF-mode t)
+(setq TeX-insert-braces t)
+(setq-default TeX-master nil)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
+ '(mail-envelope-from (quote header))
+ '(mail-specify-envelope-from t)
+ '(markdown-command "pandoc -f markdown -t html")
+ '(message-kill-buffer-on-exit t)
+ '(message-sendmail-envelope-from (quote header))
+ '(notmuch-always-prompt-for-sender t)
+ '(notmuch-crypto-process-mime t)
+ ;; '(notmuch-fcc-dirs (quote (("alex@etc-network.de" . "/home/au/Maildirs/ETC/sent") ("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/ZDV/Mail.sent"))))
+ '(notmuch-fcc-dirs (quote (("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/ZDV/Mail.sent"))))
+ '(notmuch-saved-searches (quote (("inbox" . "tag:inbox") ("info1-tut" . "folder:Mail.lists.info1-tut and tag unread") ("monetdb-users" . "tag:monetdb-users and tag:unread") ("notmuch" . "tag:notmuch and tag:unread") ("haskell-cafe" . "tag:haskell-cafe and tag:unread") ("haskell-beginners" . "tag:haskell-beginners and tag:unread") ("dbworld" . "tag:dbworld and tag:unread") ("ghc-users" . "tag:glasgow-haskell-users and tag:unread") ("caml" . "tag:caml and tag:unread") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday") ("info2-tut" . "tag:info2-tut and tag:unread"))))
+ '(notmuch-search-oldest-first nil)
+ '(notmuch-show-all-tags-list t)
+ '(scroll-bar-mode nil)
+ '(send-mail-function (quote sendmail-send-it))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
