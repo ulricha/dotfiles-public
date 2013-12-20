@@ -22,7 +22,7 @@ Config {
   -- of your screen to make it play nicely with stalonetray, which we
   -- want to be taking up the remainer of the space on the right side
   -- of your screen.
-  position = TopW L 95, 
+  position = TopW L 92, 
 
   -- list of commands which gather information about your system for
   -- presentation in the bar. 
@@ -48,7 +48,7 @@ Config {
     Run Battery [
       "-t", "<acstatus>: <left>%", 
       "--", 
-      "-c", "charge_full",
+      -- "-c", "charge_full",
       "-O", "AC",
       "-o", "Bat",
       "-h", "green",
@@ -58,7 +58,7 @@ Config {
     -- To get volume information, we run a custom bash script.
     -- This is because the built-in volume support in xmobar is disabled
     -- in Debian and derivatives like Ubuntu. 
-    Run Com "~/.xmonad/get-volume" [] "myvolume" 10,
+    Run Com "/home/au/bin/get-volume" [] "myvolume" 10,
     
     -- This line tells xmobar to read input from stdin. That's how we
     -- get the information that xmonad is sending it for display.

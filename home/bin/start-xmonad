@@ -37,23 +37,16 @@ xcompmgr -n &
 # connected screens and find out what names you should use to refer to them.
 
 # Activate primary screen 
-xrandr --output LVDS-1 --auto --primary
+xrandr --output eDP1 --auto --primary
 
 # If we find that a screen is connected via VGA, activate it and position it
 # to the left of the primary screen.
+# FIXME don't! instead, mirror.
 xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of LVDS-1
 
 # If we find that a screen is connected via DVI, activate it and position it
 # to the left of the primary screen.
-xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
-
-
-#
-# LOAD SCREEN BACKGROUNDS
-#
-
-# To set your backgrounds, run nitrogren /path/to/images
-nitrogen --restore &
+xrandr | grep 'DP1 connected' | ifne xrandr --output DP1 --auto --left-of eDP1
 
 
 #
@@ -90,6 +83,8 @@ stalonetray \
   --kludges force_icons_size \
   --window-strut none \
 &
+
+#trayer --edge top --align right --SetDockType true --SetPartialStrut true  --expand true --width 10 --transparent true --tint 0x191970 --height 15 &
 
 # Run the gnome-keyring-daemon to avoid issues you otherwise may encounter
 # when using gnome applications which expect access to the keyring, such

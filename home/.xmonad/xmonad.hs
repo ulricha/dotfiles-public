@@ -21,7 +21,6 @@ import XMonad.Layout.ResizableTile
 import XMonad.Layout.IM
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.NoBorders
-import XMonad.Layout.Circle
 import XMonad.Layout.PerWorkspace (onWorkspace)
 import XMonad.Layout.Fullscreen
 import XMonad.Util.EZConfig
@@ -43,7 +42,8 @@ myModMask            = mod4Mask       -- changes the mod key to "super"
 myFocusedBorderColor = "#ff0000"      -- color of focused border
 myNormalBorderColor  = "#cccccc"      -- color of inactive border
 myBorderWidth        = 1              -- width of border around windows
-myTerminal           = "terminator"   -- which terminal software to use
+myTerminal           = "urxvt"   -- which terminal software to use
+-- FIXME should not be necessary
 myIMRosterTitle      = "Contact List" -- title of roster on IM workspace
 
 
@@ -84,6 +84,7 @@ myUrgentWSRight = "}"
   as well.
 -}
 
+-- FIXME
 myWorkspaces =
   [
     "7:Chat",  "8:Dbg", "9:Pix",
@@ -139,11 +140,7 @@ defaultLayouts = smartBorders(avoidStruts(
   -- the available space. Remaining windows tile to both the left and
   -- right of the master window. You can resize using "super-h" and
   -- "super-l".
-  ||| ThreeColMid 1 (3/100) (3/4)
-
-  -- Circle layout places the master window in the center of the screen.
-  -- Remaining windows appear in a circle around it
-  ||| Circle))
+  ||| ThreeColMid 1 (3/100) (3/4)))
 
 
 -- Here we define some layouts which will be assigned to specific
@@ -157,19 +154,10 @@ defaultLayouts = smartBorders(avoidStruts(
 -- will want to modify that variable.
 chatLayout = avoidStruts(withIM (1%7) (Title myIMRosterTitle) Grid)
 
--- The GIMP layout uses the ThreeColMid layout. The traditional GIMP
--- floating panels approach is a bit of a challenge to handle with xmonad;
--- I find the best solution is to make the image you are working on the
--- master area, and then use this ThreeColMid layout to make the panels
--- tile to the left and right of the image. If you use GIMP 2.8, you
--- can use single-window mode and avoid this issue.
-gimpLayout = smartBorders(avoidStruts(ThreeColMid 1 (3/100) (3/4)))
-
 -- Here we combine our default layouts with our specific, workspace-locked
 -- layouts.
 myLayouts =
   onWorkspace "7:Chat" chatLayout
-  $ onWorkspace "9:Pix" gimpLayout
   $ defaultLayouts
 
 
@@ -199,11 +187,13 @@ myLayouts =
 
 myKeyBindings =
   [
+    -- FIXME what happens?
     ((myModMask, xK_b), sendMessage ToggleStruts)
     , ((myModMask, xK_a), sendMessage MirrorShrink)
     , ((myModMask, xK_z), sendMessage MirrorExpand)
     , ((myModMask, xK_p), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
+    -- FIXME thinkpad examples
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
@@ -253,15 +243,12 @@ myKeyBindings =
       editing images.
 -}
 
+-- FIXME adapt, i.e. send chrome to 2 etc.
 myManagementHooks :: [ManageHook]
 myManagementHooks = [
   resource =? "synapse" --> doIgnore
-  , resource =? "stalonetray" --> doIgnore
+  -- , resource =? "stalonetray" --> doIgnore
   , className =? "rdesktop" --> doFloat
-  , (className =? "Komodo IDE") --> doF (W.shift "5:Dev")
-  , (className =? "Komodo IDE" <&&> resource =? "Komodo_find2") --> doFloat
-  , (className =? "Komodo IDE" <&&> resource =? "Komodo_gotofile") --> doFloat
-  , (className =? "Komodo IDE" <&&> resource =? "Toplevel") --> doFloat
   , (className =? "Empathy") --> doF (W.shift "7:Chat")
   , (className =? "Pidgin") --> doF (W.shift "7:Chat")
   , (className =? "Gimp-2.8") --> doF (W.shift "9:Pix")
@@ -344,7 +331,7 @@ main = do
   , startupHook = do
       setWMName "LG3D"
       windows $ W.greedyView startupWorkspace
-      spawn "~/.xmonad/startup-hook"
+      spawn "/home/au/bin/startup-hook"
   , manageHook = manageHook defaultConfig
       <+> composeAll myManagementHooks
       <+> manageDocks
