@@ -117,3 +117,28 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 export TERM=xterm-256color
 
 export EDITOR=vim
+
+# X100 compilation settings
+# A root directory for the X100 sources, will contain e.g.
+# $SRCS/buildtools, $SRCS/x100 and more
+export SRCS=$HOME/work/dev
+
+# A directory where compilation files are stored
+export BUILD=$HOME/work/dev/x100_build
+
+# Installation directory. All files will be created in:
+# - $PREFIX/monet-bt      : buildtools
+# - $PREFIX/x100-*-*-*   : various installations
+# - $PREFIX/x100         : link to the active installation
+export PREFIX=$HOME/software
+
+# These are automatic based on above
+export BUILDTOOLS_PREFIX=$PREFIX/monet-bt
+export BIN_PREFIX=$PREFIX/bin
+export X100_PREFIX=$PREFIX/x100
+export PATH=$PATH:$BIN_PREFIX:$X100_PREFIX/bin:$BUILDTOOLS_PREFIX/bin
+export PYTHONPATH=$BUILDTOOLS_PREFIX/`python -c 'import distutils.sysconfig; print distutils.sysconfig.get_python_lib(0,0,"")'`:$BUILDTOOLS_PREFIX/lib/python2.7/site-packages
+export X100COMPILE=$SRCS/x100/x100compile
+# This two are necessary for the later compilation/running of Ingres
+export LDLIBX100="-L$X100_PREFIX/lib -lx100client"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$X100_PREFIX/lib"
