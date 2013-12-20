@@ -115,3 +115,5 @@ export PATH=$HOME/bin:$PATH
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 export TERM=xterm-256color
+
+export EDITOR=vim
