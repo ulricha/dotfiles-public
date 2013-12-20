@@ -112,6 +112,9 @@ fi
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/bin:$PATH
 
+export PATH=$HOME/software/tor:$PATH
+export PATH=$HOME/software/x100/bin:$PATH
+
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 export TERM=xterm-256color
