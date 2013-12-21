@@ -6,19 +6,16 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Layout.NoBorders
 import XMonad.Util.Run(spawnPipe)
 import XMonad.Hooks.DynamicLog
+import XMonad.Config.Xfce
 
 main = do
-    xmproc <- spawnPipe "/home/au/.cabal/bin/xmobar /home/au/.xmobarrc"
-  
-    xmonad $ defaultConfig
+    xmonad $ xfceConfig
         { modMask = mod4Mask
         , terminal = "urxvt" 
         , layoutHook = myLayout
-        , manageHook =  manageDocks <+> manageHook defaultConfig
-	, logHook = dynamicLogWithPP xmobarPP { ppOutput = hPutStrLn xmproc }
         }
 
-myLayout = avoidStruts (
+myLayout = smartBorders $ avoidStruts (
     Full |||
     Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2))) |||
