@@ -1,9 +1,14 @@
+
 (show-paren-mode 1)
 
 (when (>= emacs-major-version 24)
   (require 'package)
   (package-initialize)
   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t))
+
+(add-to-list 'load-path "~/software/notmuch-0.16/share/emacs/site-lisp/")
+
+(load-theme 'zenburn t)
 
 (require 'evil)
     (evil-mode 1)
@@ -91,12 +96,17 @@
  '(message-sendmail-envelope-from (quote header))
  '(notmuch-always-prompt-for-sender t)
  '(notmuch-crypto-process-mime t)
- ;; '(notmuch-fcc-dirs (quote (("alex@etc-network.de" . "/home/au/Maildirs/ETC/sent") ("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/ZDV/Mail.sent"))))
- '(notmuch-fcc-dirs (quote (("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/ZDV/Mail.sent"))))
- '(notmuch-saved-searches (quote (("inbox" . "tag:inbox") ("info1-tut" . "folder:Mail.lists.info1-tut and tag unread") ("monetdb-users" . "tag:monetdb-users and tag:unread") ("notmuch" . "tag:notmuch and tag:unread") ("haskell-cafe" . "tag:haskell-cafe and tag:unread") ("haskell-beginners" . "tag:haskell-beginners and tag:unread") ("dbworld" . "tag:dbworld and tag:unread") ("ghc-users" . "tag:glasgow-haskell-users and tag:unread") ("caml" . "tag:caml and tag:unread") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday") ("info2-tut" . "tag:info2-tut and tag:unread"))))
+ '(notmuch-fcc-dirs (quote (("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/zdv/Mail.sent") ("alex@etc-network.de" . "/home/au/Maildirs/etc/INBOX.sent"))))
+ '(notmuch-saved-searches (quote (("inbox" . "tag:inbox") ("monetdb-users" . "tag:monetdb-users and tag:unread") ("notmuch" . "tag:notmuch and tag:unread") ("haskell-cafe" . "tag:haskell-cafe and tag:unread") ("haskell-beginners" . "tag:haskell-beginners and tag:unread") ("dbworld" . "tag:dbworld and tag:unread") ("ghc-users" . "tag:glasgow-haskell-users and tag:unread") ("caml" . "tag:caml and tag:unread") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday"))))
  '(notmuch-search-oldest-first nil)
  '(notmuch-show-all-tags-list t)
  '(scroll-bar-mode nil)
  '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
