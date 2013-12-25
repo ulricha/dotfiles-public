@@ -12,7 +12,7 @@ import XMonad.Hooks.SetWMName
 main = do
     xmonad $ xfceConfig
         { modMask = myModMask
-        , terminal = "urxvt" 
+	, terminal = "exo-open --launch TerminalEmulator" 
         , layoutHook = myLayout
         , startupHook = setWMName "LG3D"
         } `additionalKeys` myKeyBindings
@@ -28,6 +28,9 @@ myModMask = mod4Mask
 
 myKeyBindings = 
     [ ((myModMask, xK_s), spawn "synapse")
+    , ((myModMask, xK_f), spawn "exo-open --launch FileManager")
+    , ((myModMask, xK_w), spawn "google-chrome")
+    , ((myModMask, xK_p), spawn "xfce4-display-settings --minimal")
     , ((myModMask, xK_b), sendMessage ToggleStruts)
     , ((myModMask, xK_a), sendMessage MirrorShrink)
     , ((myModMask, xK_z), sendMessage MirrorExpand)
