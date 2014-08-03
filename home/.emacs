@@ -26,11 +26,14 @@
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;; ghc-mod
-;; Enable ghc-mod
-;(autoload 'ghc-init "ghc" nil t)
-;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+;; Enable auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
 
+;; Show 0.8 second later
+(setq ac-auto-show-menu 0.8)
+
+;; Enable haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
