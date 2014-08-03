@@ -29,3 +29,5 @@ autocmd FileType ocaml setlocal shiftwidth=2 textwidth=78
 
 autocmd FileType xhtml,html set shiftwidth=2
 autocmd FileType cpp setlocal nosmartindent cindent noexpandtab tabstop=4 shiftwidth=4
+
+autocmd FileType cabal,haskell setlocal expandtab shiftwidth=4

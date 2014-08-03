@@ -117,6 +117,11 @@ source "$HOME/.homesick/repos/homeshick/homeshick.sh"
 
 #export TERM=xterm-256color
 
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
 export EDITOR=vim
 
 # X100 compilation settings
@@ -143,3 +148,23 @@ export X100COMPILE=$SRCS/x100/x100compile
 # This two are necessary for the later compilation/running of Ingres
 export LDLIBX100="-L$X100_PREFIX/lib -lx100client"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$X100_PREFIX/lib"
+
+export GHC_DISTRIBUTION_DIR=/home/au/software/ghc
+export GHC_CONFIG_DIR=/home/au/.ghc-config
+export CABAL_USER_DIR=/home/au/.cabal
+
+export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/software/tor:$PATH
+export PATH=$HOME/software/tom-2.7:$PATH
+export PATH=$HOME/software/x100/bin:$PATH
+#export PATH=$HOME/software/ghc-7.6.3/bin:$PATH
+export PATH=$HOME/software/isync-1.1.0/bin:$PATH
+export PATH=$HOME/software/notmuch-0.16/bin:$PATH
+#export PATH=$HOME/software/postgres-git/bin:$PATH
+
+# export PATH=$HOME/ghc/ghc/bin:$PATH
+export PATH=$GHC_DISTRIBUTION_DIR/bin:$PATH
+export PATH=$GHC_CONFIG_DIR/ghc/bin:$PATH
+export PATH=$CABAL_USER_DIR/bin:$PATH
+
+ghc-config -i

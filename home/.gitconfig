@@ -1,3 +1,5 @@
 [user]
 	email = alex@etc-network.de
 	name = Alexander Ulrich
+[color]
+	ui = true

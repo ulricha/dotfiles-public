@@ -1,10 +1,15 @@
 
 (show-paren-mode 1)
 
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (package-initialize)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t))
+(setq line-number-mode t)
+(setq column-number-mode t)
+
+(require 'package)
+(package-initialize)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(setq package-archives '(;("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
 
 (add-to-list 'load-path "~/software/notmuch-0.16/share/emacs/site-lisp/")
 
@@ -17,6 +22,10 @@
 
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;; Enable ghc-mod
+;(autoload 'ghc-init "ghc" nil t)
+;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
@@ -88,6 +97,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(haskell-indent-spaces 4)
  '(inhibit-startup-screen t)
  '(mail-envelope-from (quote header))
  '(mail-specify-envelope-from t)
@@ -97,7 +108,7 @@
  '(notmuch-always-prompt-for-sender t)
  '(notmuch-crypto-process-mime t)
  '(notmuch-fcc-dirs (quote (("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/zdv/Mail.sent") ("alex@etc-network.de" . "/home/au/Maildirs/etc/INBOX.sent"))))
- '(notmuch-saved-searches (quote (("inbox" . "tag:inbox") ("monetdb-users" . "tag:monetdb-users and tag:unread") ("notmuch" . "tag:notmuch and tag:unread") ("haskell-cafe" . "tag:haskell-cafe and tag:unread") ("haskell-beginners" . "tag:haskell-beginners and tag:unread") ("dbworld" . "tag:dbworld and tag:unread") ("ghc-users" . "tag:glasgow-haskell-users and tag:unread") ("caml" . "tag:caml and tag:unread") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday"))))
+ '(notmuch-saved-searches (quote (("notmuch" . "tag:notmuch and tag:inbox") ("haskell-cafe" . "tag:haskell-cafe and tag:inbox") ("haskell-beginners" . "tag:haskell-beginners and tag:inbox") ("dbworld" . "tag:dbworld and tag:inbox") ("ghc-users" . "tag:glasgow-haskell-users and tag:inbox") ("caml" . "tag:caml and tag:inbox") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday") ("work" . "tag:work and tag:inbox") ("main" . "tag:main and tag:inbox") ("tor-relay" . "tag:tor-relay and tag:inbox") ("pgsql-general" . "tag:pgsql-general and tag:inbox") ("pgsql-performance" . "tag:pgsql-performance and tag:inbox") ("monetdb-users" . "tag:monetdb-users and tag:inbox"))))
  '(notmuch-search-oldest-first nil)
  '(notmuch-show-all-tags-list t)
  '(scroll-bar-mode nil)
@@ -109,4 +120,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 90 :width normal)))))
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
