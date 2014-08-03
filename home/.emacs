@@ -69,6 +69,11 @@
 (eval-after-load "haskell-mode"
   '(define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
 
+;; Enable ghc-mod Emacs frontend
+(autoload 'ghc-init "ghc" nil t)
+(autoload 'ghc-debug "ghc" nil t)
+(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+
 ;; Notmuch Emacs interface
 (require 'notmuch)
 (require 'notmuch-address)
