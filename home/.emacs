@@ -1,4 +1,3 @@
-
 (show-paren-mode 1)
 
 (setq line-number-mode t)
@@ -13,16 +12,21 @@
 
 (add-to-list 'load-path "~/software/notmuch-0.16/share/emacs/site-lisp/")
 
+;; Zenburn color theme
 (load-theme 'zenburn t)
 
+;; Evil vim emulation
 (require 'evil)
     (evil-mode 1)
 
+;; Enable syntax highlighting globally
 (global-font-lock-mode 1)
 
+;; Magit git interface
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
 
+;; ghc-mod
 ;; Enable ghc-mod
 ;(autoload 'ghc-init "ghc" nil t)
 ;(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
@@ -30,8 +34,11 @@
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
+;; haskell-mode key bindings
+;; Note: negative prefix C-- C-c C-c enables full rebuild
 (eval-after-load "haskell-mode"
   '(progn
+     ;; FIXME seems to collide with evil-mode
      (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
      (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
 
@@ -54,11 +61,13 @@
     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
     ;; Jump to the definition of the current symbol.
     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+    ;; Prompt for cabal command to run
+    (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
     (define-key haskell-mode-map (kbd "C-c M-.") nil)
     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
 
-;(eval-after-load "haskell-mode"
-;  (define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
+(eval-after-load "haskell-mode"
+  '(define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
 
 ;; Notmuch Emacs interface
 (require 'notmuch)
@@ -99,6 +108,7 @@
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
  '(haskell-indent-spaces 4)
+ '(haskell-process-type (quote cabal-repl))
  '(inhibit-startup-screen t)
  '(mail-envelope-from (quote header))
  '(mail-specify-envelope-from t)
