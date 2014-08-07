@@ -130,6 +130,6 @@ export PATH=$GHC_DISTRIBUTION_DIR/bin:$PATH
 export PATH=$GHC_CONFIG_DIR/ghc/bin:$PATH
 export PATH=$CABAL_USER_DIR/bin:$PATH
 
-ghc-config -i
+#ghc-config -i
 
 source "$HOME/.homesick/repos/homeshick/homeshick.sh"
