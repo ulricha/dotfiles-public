@@ -3,3 +3,5 @@
 	name = Alexander Ulrich
 [color]
 	ui = true
+[push]
+	default = simple
