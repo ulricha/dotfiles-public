@@ -81,6 +81,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export TERM=xterm-256color
+
 ################################################################################
 # X100 compilation settings
 # A root directory for the X100 sources, will contain e.g.
