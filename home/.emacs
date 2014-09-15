@@ -3,11 +3,14 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
+;; Tabs are evil
+(setq-default indent-tabs-mode nil)
+
 (require 'package)
 (package-initialize)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(add-to-list 'load-path "~/software/notmuch-0.16/share/emacs/site-lisp/")
+(add-to-list 'load-path "~/software/notmuch-0.18.1/share/emacs/site-lisp/")
 
 ;; Zenburn color theme
 (load-theme 'zenburn t)
@@ -15,6 +18,10 @@
 ;; Evil vim emulation
 (require 'evil)
     (evil-mode 1)
+
+;; evil-surround
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 
 ;; Enable syntax highlighting globally
 (global-font-lock-mode 1)
@@ -82,12 +89,13 @@
 (define-key notmuch-show-mode-map "d"
   (lambda ()
     (interactive)
-    (notmuch-show-tag-message "+delete")))
+    (notmuch-show-tag-message (list "+delete"))
+    (notmuch-show-refresh-view)))
 
 (define-key notmuch-search-mode-map "d"
   (lambda ()
     (interactive)
-    (notmuch-search-tag "+delete")))
+    (notmuch-search-tag (list "+delete"))))
 
 ;; Auctex
 ;(load "auctex.el" nil t t)
