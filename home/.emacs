@@ -35,7 +35,7 @@
 (ac-config-default)
 
 ;; Show 0.8 second later
-(setq ac-auto-show-menu 0.8)
+;(setq ac-auto-show-menu 0.8)
 
 ;; Enable haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
@@ -137,6 +137,7 @@
  '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
