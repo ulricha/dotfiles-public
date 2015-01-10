@@ -19,6 +19,11 @@
 (require 'evil)
     (evil-mode 1)
 
+;; ido mode
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
+(ido-mode 1)
+
 ;; evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
@@ -43,37 +48,56 @@
 
 ;; haskell-mode key bindings
 ;; Note: negative prefix C-- C-c C-c enables full rebuild
-(eval-after-load "haskell-mode"
-  '(progn
-     ;; FIXME seems to collide with evil-mode
-     (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
-     (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
+;; (eval-after-load "haskell-mode"
+;;   '(progn
+;;      ;; FIXME seems to collide with evil-mode
+;;      (define-key haskell-mode-map (kbd "C-,") 'haskell-move-nested-left)
+;;      (define-key haskell-mode-map (kbd "C-.") 'haskell-move-nested-right)))
 
-(eval-after-load "haskell-mode"
-    '(define-key haskell-mode-map (kbd "C-c C-b") 'haskell-compile))
+;; (eval-after-load "haskell-mode"
+;;     '(define-key haskell-mode-map (kbd "C-c C-b") 'haskell-compile))
 
-(eval-after-load "haskell-cabal"
-    '(define-key haskell-cabal-mode-map (kbd "C-c C-b") 'haskell-compile))
+;; (eval-after-load "haskell-cabal"
+;;     '(define-key haskell-cabal-mode-map (kbd "C-c C-b") 'haskell-compile))
 
-(eval-after-load "haskell-mode"
-  '(progn
-    (define-key haskell-mode-map (kbd "C-x C-d") nil)
-    (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
-    (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
-    (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
-    (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
-    ;; Jump to the imports. Keep tapping to jump between import
-    ;; groups. C-u f8 to jump back again.
-    (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
-    ;; Jump to the definition of the current symbol.
-    (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
-    ;; Prompt for cabal command to run
-    (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
-    (define-key haskell-mode-map (kbd "C-c M-.") nil)
-    (define-key haskell-mode-map (kbd "C-c C-d") nil)))
+;; (eval-after-load "haskell-mode"
+;;   '(progn
+;;     (define-key haskell-mode-map (kbd "C-x C-d") nil)
+;;     (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+;;     (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
+;;     (define-key haskell-mode-map (kbd "C-c C-t") 'haskell-process-do-type)
+;;     (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-process-do-info)
+;;     ;; Jump to the imports. Keep tapping to jump between import
+;;     ;; groups. C-u f8 to jump back again.
+;;     (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+;;     ;; Jump to the definition of the current symbol.
+;;     (define-key haskell-mode-map (kbd "M-.") 'haskell-mode-tag-find)
+;;     ;; Prompt for cabal command to run
+;;     (define-key haskell-mode-map (kbd "C-c c") 'haskell-process-cabal)
+;;     (define-key haskell-mode-map (kbd "C-c M-.") nil)
+;;     (define-key haskell-mode-map (kbd "C-c C-d") nil)))
 
-(eval-after-load "haskell-mode"
-  '(define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
+;; (eval-after-load "haskell-mode"
+;;   '(define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file))
+
+; Mostly harvested from https://github.com/serras/emacs-haskell-tutorial/blob/master/tutorial.md
+(eval-after-load 'haskell-mode '(progn
+  (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-or-reload)
+  (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-mode-map (kbd "C-c C-n C-t") 'haskell-process-do-type)
+  (define-key haskell-mode-map (kbd "C-c C-n C-i") 'haskell-process-do-info)
+  (define-key haskell-mode-map (kbd "C-c C-n C-c") 'haskell-process-cabal-build)
+  (define-key haskell-mode-map (kbd "C-c C-n c") 'haskell-process-cabal)
+  (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
+  ;; Jump to the imports. Keep tapping to jump between import
+  ;; groups. C-u f8 to jump back again.
+  (define-key haskell-mode-map [f8] 'haskell-navigate-imports)))
+
+(eval-after-load 'haskell-cabal '(progn
+  (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-k") 'haskell-interactive-mode-clear)
+  (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
+  (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
 ;; Enable ghc-mod Emacs frontend
 (autoload 'ghc-init "ghc" nil t)
@@ -121,6 +145,9 @@
  '(column-number-mode t)
  '(haskell-indent-spaces 4)
  '(haskell-process-type (quote cabal-repl))
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-log t)
  '(inhibit-startup-screen t)
  '(mail-envelope-from (quote header))
  '(mail-specify-envelope-from t)
