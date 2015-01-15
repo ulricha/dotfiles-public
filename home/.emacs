@@ -10,7 +10,7 @@
 (package-initialize)
 (setq package-archives '(("melpa" . "http://melpa.milkbox.net/packages/")))
 
-(add-to-list 'load-path "~/software/notmuch-0.18.1/share/emacs/site-lisp/")
+(add-to-list 'load-path "~/software/notmuch-0.19/share/emacs/site-lisp/")
 
 ;; Zenburn color theme
 (load-theme 'zenburn t)
@@ -91,7 +91,8 @@
   (define-key haskell-mode-map (kbd "SPC") 'haskell-mode-contextual-space)
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
-  (define-key haskell-mode-map [f8] 'haskell-navigate-imports)))
+  (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
+  (define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file)))
 
 (eval-after-load 'haskell-cabal '(progn
   (define-key haskell-cabal-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
