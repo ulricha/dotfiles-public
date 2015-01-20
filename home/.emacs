@@ -105,22 +105,25 @@
 (autoload 'ghc-debug "ghc" nil t)
 (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
-;; Notmuch Emacs interface
-(require 'notmuch)
-(require 'notmuch-address)
-(setq notmuch-address-command "/home/au/bin/notmuch-google-contacts")
-(notmuch-address-message-insinuate)
+;; Enable ghc-mod backend for company-mode
+;; (add-to-list 'company-backends 'company-ghc)
 
-(define-key notmuch-show-mode-map "d"
-  (lambda ()
-    (interactive)
-    (notmuch-show-tag-message (list "+delete"))
-    (notmuch-show-refresh-view)))
+;; ;; Notmuch Emacs interface
+;; (require 'notmuch)
+;; (require 'notmuch-address)
+;; (setq notmuch-address-command "/home/au/bin/notmuch-google-contacts")
+;; (notmuch-address-message-insinuate)
 
-(define-key notmuch-search-mode-map "d"
-  (lambda ()
-    (interactive)
-    (notmuch-search-tag (list "+delete"))))
+;; (define-key notmuch-show-mode-map "d"
+;;   (lambda ()
+;;     (interactive)
+;;     (notmuch-show-tag-message (list "+delete"))
+;;     (notmuch-show-refresh-view)))
+
+;; (define-key notmuch-search-mode-map "d"
+;;   (lambda ()
+;;     (interactive)
+;;     (notmuch-search-tag (list "+delete"))))
 
 ;; Auctex
 ;(load "auctex.el" nil t t)
