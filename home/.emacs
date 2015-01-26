@@ -40,7 +40,9 @@
 (ac-config-default)
 
 ;; Show 0.8 second later
-;(setq ac-auto-show-menu 0.8)
+(setq ac-auto-show-menu 0.8)
+
+;;(add-hook 'after-init-hook 'global-company-mode)
 
 ;; Enable haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
@@ -147,11 +149,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(company-backends (quote (company-elisp company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf (company-dabbrev-code company-gtags company-etags company-keywords) company-oddmuse company-files company-dabbrev company-ghc)))
  '(haskell-indent-spaces 4)
- '(haskell-process-type (quote cabal-repl))
- '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-interactive-popup-errors nil)
  '(haskell-process-auto-import-loaded-modules t)
  '(haskell-process-log t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote cabal-repl))
  '(inhibit-startup-screen t)
  '(mail-envelope-from (quote header))
  '(mail-specify-envelope-from t)
