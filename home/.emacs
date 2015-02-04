@@ -44,6 +44,9 @@
 (require 'hl-line)
 (global-hl-line-mode 1)
 
+;; Match parens automatically
+(electric-pair-mode 1)
+
 ;; Magit git interface
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
