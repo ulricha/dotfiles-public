@@ -31,6 +31,19 @@
 ;; Enable syntax highlighting globally
 (global-font-lock-mode 1)
 
+;; Highlight trailing whitespace, overly long lines and empty lines at
+;; the end of a file. Also, show newlines explicitly.
+(require 'whitespace)
+(setq whitespace-style (quote (face trailing tabs lines newline empty newline-mark)))
+(setq whitespace-line-column 85)
+(setq whitespace-display-mappings
+      '((newline-mark 10 [172 10])))
+(global-whitespace-mode 1)
+
+;; Highlight the current line
+(require 'hl-line)
+(global-hl-line-mode 1)
+
 ;; Magit git interface
 (require 'magit)
 (global-set-key (kbd "C-x g") 'magit-status)
