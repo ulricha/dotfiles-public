@@ -48,7 +48,7 @@
 (global-hl-line-mode 1)
 
 ;; Match parens automatically
-(electric-pair-mode 1)
+(electric-pair-mode 1)                  ;
 
 ;; Magit git interface
 (require 'magit)
@@ -175,6 +175,8 @@
  '(haskell-process-log t)
  '(haskell-process-suggest-remove-import-lines t)
  '(haskell-process-type (quote cabal-repl))
+ '(haskell-process-args-cabal-repl
+   '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
  '(inhibit-startup-screen t)
  '(mail-envelope-from (quote header))
  '(mail-specify-envelope-from t)
