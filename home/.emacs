@@ -122,30 +122,8 @@
   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
-;; ;; Enable ghc-mod Emacs frontend
-;; (autoload 'ghc-init "ghc" nil t)
-;; (autoload 'ghc-debug "ghc" nil t)
-;; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
-
-;; Enable ghc-mod backend for company-mode
-;; (add-to-list 'company-backends 'company-ghc)
-
-;; ;; Notmuch Emacs interface
-;; (require 'notmuch)
-;; (require 'notmuch-address)
-;; (setq notmuch-address-command "/home/au/bin/notmuch-google-contacts")
-;; (notmuch-address-message-insinuate)
-
-;; (define-key notmuch-show-mode-map "d"
-;;   (lambda ()
-;;     (interactive)
-;;     (notmuch-show-tag-message (list "+delete"))
-;;     (notmuch-show-refresh-view)))
-
-;; (define-key notmuch-search-mode-map "d"
-;;   (lambda ()
-;;     (interactive)
-;;     (notmuch-search-tag (list "+delete"))))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; LaTeX
 
 ;; Auctex
 ;(load "auctex.el" nil t t)
@@ -168,8 +146,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(column-number-mode t)
- '(company-backends (quote (company-elisp company-bbdb company-nxml company-css company-eclim company-semantic company-clang company-xcode company-ropemacs company-cmake company-capf (company-dabbrev-code company-gtags company-etags company-keywords) company-oddmuse company-files company-dabbrev company-ghc)))
  '(haskell-indent-spaces 4)
  '(haskell-interactive-popup-errors nil)
  '(haskell-process-auto-import-loaded-modules t)
@@ -179,19 +155,10 @@
  '(haskell-process-args-cabal-repl
    '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
  '(inhibit-startup-screen t)
- '(mail-envelope-from (quote header))
- '(mail-specify-envelope-from t)
  '(markdown-command "pandoc -f markdown -t html")
  '(message-kill-buffer-on-exit t)
  '(message-sendmail-envelope-from (quote header))
- '(notmuch-always-prompt-for-sender t)
- '(notmuch-crypto-process-mime t)
- '(notmuch-fcc-dirs (quote (("alexander.ulrich@uni-tuebingen.de" . "/home/au/Maildirs/zdv/Mail.sent") ("alex@etc-network.de" . "/home/au/Maildirs/etc/INBOX.sent"))))
- '(notmuch-saved-searches (quote (("notmuch" . "tag:notmuch and tag:inbox") ("haskell-cafe" . "tag:haskell-cafe and tag:inbox") ("haskell-beginners" . "tag:haskell-beginners and tag:inbox") ("dbworld" . "tag:dbworld and tag:inbox") ("ghc-users" . "tag:glasgow-haskell-users and tag:inbox") ("caml" . "tag:caml and tag:inbox") ("ACTION" . "tag:action") ("WAITING" . "tag:waiting") ("SOMEDAY" . "tag:someday") ("work" . "tag:work and tag:inbox") ("main" . "tag:main and tag:inbox") ("tor-relay" . "tag:tor-relay and tag:inbox") ("pgsql-general" . "tag:pgsql-general and tag:inbox") ("pgsql-performance" . "tag:pgsql-performance and tag:inbox") ("monetdb-users" . "tag:monetdb-users and tag:inbox"))))
- '(notmuch-search-oldest-first nil)
- '(notmuch-show-all-tags-list t)
  '(scroll-bar-mode nil)
- '(send-mail-function (quote sendmail-send-it))
  '(show-paren-mode t)
  '(tool-bar-mode nil))
 
