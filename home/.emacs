@@ -65,6 +65,7 @@
 
 ;; Enable haskell-mode
 (add-hook 'haskell-mode-hook 'turn-on-haskell-simple-indent)
+;; (add-hook 'haskell-mode-hook 'turn-on-hi2)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-decl-scan)
 
 ;; haskell-mode key bindings
@@ -121,10 +122,10 @@
   (define-key haskell-cabal-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
   (define-key haskell-cabal-mode-map (kbd "C-c c") 'haskell-process-cabal)))
 
-;; Enable ghc-mod Emacs frontend
-(autoload 'ghc-init "ghc" nil t)
-(autoload 'ghc-debug "ghc" nil t)
-(add-hook 'haskell-mode-hook (lambda () (ghc-init)))
+;; ;; Enable ghc-mod Emacs frontend
+;; (autoload 'ghc-init "ghc" nil t)
+;; (autoload 'ghc-debug "ghc" nil t)
+;; (add-hook 'haskell-mode-hook (lambda () (ghc-init)))
 
 ;; Enable ghc-mod backend for company-mode
 ;; (add-to-list 'company-backends 'company-ghc)
