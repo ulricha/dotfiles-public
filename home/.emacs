@@ -31,6 +31,9 @@
 ;; Enable syntax highlighting globally
 (global-font-lock-mode 1)
 
+;; Show line numbers a la vim
+(global-linum-mode t)
+
 ;; Highlight trailing whitespace, overly long lines and empty lines at
 ;; the end of a file. Also, show newlines explicitly.
 (require 'whitespace)
