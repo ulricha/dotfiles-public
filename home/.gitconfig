@@ -1,7 +1,18 @@
 [user]
 	email = alex@etc-network.de
 	name = Alexander Ulrich
-[color]
-	ui = true
+	signingkey = 9D6B4CE4
+
 [push]
 	default = simple
+
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+
+[color]
+	ui = true
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
