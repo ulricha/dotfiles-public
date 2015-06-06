@@ -1,5 +1,7 @@
 (show-paren-mode 1)
 
+(setq magit-last-seen-setup-instructions "1.4.0")
+
 (setq line-number-mode t)
 (setq column-number-mode t)
 
@@ -17,9 +19,31 @@
 
 
 ;; ido mode
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;; (setq ido-enable-flex-matching t)
+;; (setq ido-everywhere t)
+;; (ido-mode 1)
+
+;; helm
+(require 'helm-config)
+(helm-mode 1)
+;; (require 'helm-dash)
+
+;; (defun activate-package-docsets (root)
+;;   (progn
+;;     (setq helm-dash-docsets-path root)
+;;     (setq helm-dash-common-docsets (helm-dash-installed-docsets))
+
+;;     (message
+;;      (format "activated %d docsets from: %s"
+;;              (length helm-dash-common-docsets) root))
+;;     ))
+
+;; ;; (activate-package-docsets "/path/to/project/docsets/")
+
+;; projectile and helm integration
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; General Editing
@@ -194,11 +218,12 @@
 (define-key haskell-mode-map (kbd "C-c i") 'hindent/reformat-decl)
 (define-key haskell-mode-map [f8] 'haskell-navigate-imports)
 (define-key haskell-mode-map (kbd "C-c C-u") 'haskell-insert-undefined)
-(define-key haskell-mode-map (kbd "C-c C-a") 'haskell-insert-doc)
+;; (define-key haskell-mode-map (kbd "C-c C-a") 'haskell-insert-doc)
 (define-key haskell-mode-map (kbd "C-<return>") 'haskell-simple-indent-newline-indent)
 (define-key haskell-mode-map (kbd "C-<right>") 'haskell-move-right)
 (define-key haskell-mode-map (kbd "C-<left>") 'haskell-move-left)
 (define-key haskell-mode-map (kbd "<space>") 'haskell-mode-contextual-space)
+(define-key haskell-mode-map (kbd "C-c v c") 'haskell-cabal-visit-file)
 
 (define-key haskell-cabal-mode-map (kbd "C-`") 'haskell-interactive-bring)
 (define-key haskell-cabal-mode-map [?\C-c ?\C-z] 'haskell-interactive-switch)
@@ -238,35 +263,29 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-process-type (quote cabal-repl))
- '(haskell-process-args-cabal-repl
-   '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
- ;'(haskell-notify-p t)
- ;'(haskell-stylish-on-save nil)
- ;'(haskell-tags-on-save nil)
- '(haskell-process-suggest-remove-import-lines t)
- '(haskell-process-auto-import-loaded-modules t)
- '(haskell-process-log t)
- ;'(haskell-process-reload-with-fbytecode nil)
- '(haskell-process-use-presentation-mode t)
- '(haskell-interactive-mode-include-file-name nil)
- '(haskell-interactive-mode-eval-pretty nil)
- '(haskell-process-suggest-haskell-docs-imports t)
- '(hindent-style "johan-tibell")
- '(haskell-interactive-mode-eval-mode 'haskell-mode)
- '(haskell-process-path-ghci "ghci-ng")
- '(haskell-process-args-ghci '("-ferror-spans"))
- '(haskell-process-args-cabal-repl
-   '("--ghc-option=-ferror-spans" "--with-ghc=ghci-ng"))
- '(haskell-process-generate-tags nil)
-
+ '(column-number-mode t)
  '(haskell-indent-spaces 4)
+ '(haskell-interactive-mode-eval-mode (quote haskell-mode))
+ '(haskell-interactive-mode-eval-pretty nil)
+ '(haskell-interactive-mode-include-file-name nil)
  '(haskell-interactive-popup-errors nil)
+ '(haskell-process-args-cabal-repl (quote ("--ghc-option=-ferror-spans" "--with-ghc=ghci")))
+ '(haskell-process-args-ghci (quote ("-ferror-spans")))
+ '(haskell-process-auto-import-loaded-modules t)
+ '(haskell-process-generate-tags nil)
+ '(haskell-process-log t)
+ '(haskell-process-path-ghci "ghci")
+ '(haskell-process-suggest-haskell-docs-imports t)
+ '(haskell-process-suggest-remove-import-lines t)
+ '(haskell-process-type (quote cabal-repl))
+ '(haskell-process-use-presentation-mode t)
+ '(hindent-style "johan-tibell")
  '(inhibit-startup-screen t)
  '(markdown-command "pandoc -f markdown -t html")
  '(message-kill-buffer-on-exit t)
  '(message-sendmail-envelope-from (quote header))
  '(scroll-bar-mode nil)
+ '(show-paren-mode t)
  '(tool-bar-mode nil))
 
 (custom-set-faces
@@ -275,3 +294,4 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 113 :width normal)))))
+
