@@ -122,12 +122,10 @@ export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/software/tor:$PATH
 export PATH=$HOME/software/tom-2.7:$PATH
 export PATH=$HOME/software/x100/bin:$PATH
-#export PATH=$HOME/software/ghc-7.6.3/bin:$PATH
 export PATH=$HOME/software/isync-1.1.0/bin:$PATH
 export PATH=$HOME/software/notmuch-0.18.1/bin:$PATH
-#export PATH=$HOME/software/postgres-git/bin:$PATH
+export PATH=$HOME/software/racket/bin:$PATH
 
-# export PATH=$HOME/ghc/ghc/bin:$PATH
 export PATH=$GHC_DISTRIBUTION_DIR/bin:$PATH
 export PATH=$GHC_CONFIG_DIR/ghc/bin:$PATH
 export PATH=$CABAL_USER_DIR/bin:$PATH
