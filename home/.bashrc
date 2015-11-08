@@ -149,9 +149,9 @@ export X100COMPILE=$SRCS/x100/x100compile
 export LDLIBX100="-L$X100_PREFIX/lib -lx100client"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$X100_PREFIX/lib"
 
-export GHC_DISTRIBUTION_DIR=/home/au/software/ghc
-export GHC_CONFIG_DIR=/home/au/.ghc-config
-export CABAL_USER_DIR=/home/au/.cabal
+export GHC_DISTRIBUTION_DIR=$HOME/software/ghc
+export GHC_CONFIG_DIR=$HOME/.ghc-config
+export CABAL_USER_DIR=$HOME/.cabal
 
 export PATH=$HOME/.cabal/bin:$PATH
 export PATH=$HOME/software/tor:$PATH

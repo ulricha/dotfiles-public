@@ -45,7 +45,7 @@ CASE_SENSITIVE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git cabal)
+plugins=(git cabal brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,9 +112,9 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$X100_PREFIX/lib"
 ################################################################################
 # ghc-config
 
-export GHC_DISTRIBUTION_DIR=/home/au/software/ghc
-export GHC_CONFIG_DIR=/home/au/.ghc-config
-export CABAL_USER_DIR=/home/au/.cabal
+export GHC_DISTRIBUTION_DIR=$HOME/software/ghc
+export GHC_CONFIG_DIR=$HOME/.ghc-config
+export CABAL_USER_DIR=$HOME/.cabal
 
 ################################################################################
 # Paths
