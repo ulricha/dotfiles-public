@@ -85,6 +85,9 @@ fi
 
 export TERM=xterm-256color
 
+# enable history-searching in vi mode
+bindkey "^R" history-incremental-search-backward
+
 ################################################################################
 # X100 compilation settings
 # A root directory for the X100 sources, will contain e.g.
@@ -114,23 +117,29 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$X100_PREFIX/lib"
 ################################################################################
 # ghc-config
 
-export GHC_DISTRIBUTION_DIR=$HOME/software/ghc
-export GHC_CONFIG_DIR=$HOME/.ghc-config
-export CABAL_USER_DIR=$HOME/.cabal
+#export GHC_DISTRIBUTION_DIR=$HOME/software/ghc
+#export GHC_CONFIG_DIR=$HOME/.ghc-config
+#export CABAL_USER_DIR=$HOME/.cabal
 
 ################################################################################
 # Paths
-export PATH=$HOME/.cabal/bin:$PATH
-export PATH=$HOME/software/tor:$PATH
-export PATH=$HOME/software/tom-2.7:$PATH
-export PATH=$HOME/software/x100/bin:$PATH
-export PATH=$HOME/software/isync-1.1.0/bin:$PATH
-export PATH=$HOME/software/notmuch-0.18.1/bin:$PATH
-export PATH=$HOME/software/racket/bin:$PATH
 
-export PATH=$GHC_DISTRIBUTION_DIR/bin:$PATH
-export PATH=$GHC_CONFIG_DIR/ghc/bin:$PATH
-export PATH=$CABAL_USER_DIR/bin:$PATH
+eval `/usr/libexec/path_helper -s`
+
+export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
+
+#export PATH=$GHC_DISTRIBUTION_DIR/bin:$PATH
+#export PATH=$GHC_CONFIG_DIR/ghc/bin:$PATH
+#export PATH=$CABAL_USER_DIR/bin:$PATH
+
+# Add GHC 7.10.2 to the PATH, via https://ghcformacosx.github.io/
+#export GHC_DOT_APP="/opt/homebrew-cask/Caskroom/ghc/7.10.2-r0/ghc-7.10.2.app"
+#if [ -d "$GHC_DOT_APP" ]; then
+#  export PATH="${HOME}/.local/bin:${HOME}/.cabal/bin:${GHC_DOT_APP}/Contents/bin:${PATH}"
+#fi
+
+export PATH=$HOME/software/ghc/7.10.3/bin:$PATH
 
 #ghc-config -i
 
