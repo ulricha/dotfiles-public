@@ -25,16 +25,17 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      emacs-lisp
-     (haskell :variables haskell-enable-ghci-ng-support t)
+     haskell
      git
      markdown
      latex
+     scala
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
