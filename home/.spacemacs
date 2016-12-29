@@ -18,6 +18,11 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
+     python
+     ;; javascript
+     ;; html
+     sql
+     yaml
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -25,17 +30,19 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      emacs-lisp
-     haskell
+     ;;'((haskell :variables haskell-enable-hlint-support nil))
+     ;;haskell
+     (haskell :variables haskell-enable-ghc-mod-support nil)
      git
      markdown
      latex
-     scala
+     ;; scala
      ;; org
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     (syntax-checking :variables syntax-checking-enable-tooltips nil)
+     spell-checking
+     ;; (syntax-checking :variables syntax-checking-enable-tooltips nil)
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -213,6 +220,9 @@ layers configuration. You are free to put any user code."
  '(haskell-indentation-ifte-offset 4)
  '(haskell-indentation-layout-offset 4)
  '(haskell-indentation-left-offset 4)
+ '(package-selected-packages
+   (quote
+    (hide-comnt helm-purpose window-purpose imenu-list yaml-mode which-key use-package toc-org spacemacs-theme spaceline restart-emacs pytest py-isort pip-requirements persp-mode pcre2el paradox spinner orgit org org-plus-contrib neotree move-text macrostep live-py-mode intero flycheck info+ hydra hungry-delete hl-todo highlight-indentation help-fns+ helm-themes helm-pydoc helm-projectile helm-make projectile helm-hoogle helm-descbinds helm-company helm-ag haskell-snippets git-timemachine git-link flyspell-correct-helm flyspell-correct eyebrowse expand-region evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit dumb-jump company-auctex column-enforce-mode auto-yasnippet auctex-latexmk auctex aggressive-indent ace-window ace-link ace-jump-helm-line auto-complete anaconda-mode company anzu iedit smartparens highlight undo-tree haskell-mode yasnippet request helm helm-core magit magit-popup git-commit with-editor async markdown-mode f s dash zenburn-theme yapfify ws-butler window-numbering volatile-highlights vi-tilde-fringe uuidgen sql-indent smeargle seq rainbow-delimiters quelpa pyvenv pyenv-mode powerline popwin pkg-info org-bullets open-junk-file mmm-mode markdown-toc magit-gitflow lorem-ipsum linum-relative link-hint let-alist indent-guide ido-vertical-mode hy-mode hlint-refactor hindent highlight-parentheses highlight-numbers helm-swoop helm-mode-manager helm-gitignore helm-flx helm-c-yasnippet google-translate golden-ratio gitconfig-mode gitattributes-mode git-messenger gh-md flx-ido fill-column-indicator fancy-battery exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav diminish define-word cython-mode company-statistics company-ghci company-ghc company-cabal company-anaconda cmm-mode clean-aindent-mode bind-key auto-highlight-symbol auto-dictionary auto-compile adaptive-wrap ac-ispell)))
  '(tab-width 4))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
